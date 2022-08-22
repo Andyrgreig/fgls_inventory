@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h2 #{title}
+  div(class='grid-container product')
+    for item in list_items
+      div(class="content-container product")
+        - const img = item.image
+        div(class='flex-container image')
+          img(class="image product" src=img)
+        h3 #{item.name}
+        - const price = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(item.price)
+        h4(class="price") #{price}
+        if item.stock > 0 
+          p(class='stock') In stock #{'('}#{item.stock}#{')'}
+        else
+          p Out of stock
+        div(class='flex-container')
+          a(href=item.url) Details
+          a(href=item.url + '/update')
+            img(class="icon" src="../images/update.svg")
+          a(href=item.url + '/delete')
+            img(class="icon" src="../images/delete.svg")

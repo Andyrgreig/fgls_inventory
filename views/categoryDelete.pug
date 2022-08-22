@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  
+  div(class='form-container')
+    h2 #{title}
+    p #[strong Category:] #{item.name}
+      - const img = item.image
+      div(class='image-container category')
+        img(class='image category delete', src=img)
+    form(method='POST', action=item.url+'/delete')
+      #form-group
+        input.form-control(type="hidden" value="delete")
+        label Admin Password:
+        input.form-control(name='password', type='password')
+      br
+      input.btn.btn-primary(type='submit',value='Delete')
+
+    if errors
+     ul
+      for error in errors
+       li!= error.msg  

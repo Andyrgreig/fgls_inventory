@@ -1,0 +1,50 @@
+/* Global styling */
+body {
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: #eaeded;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+a {
+  color: #00b7ff;
+}
+
+h2 {
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+}
+
+.content-container h3,
+.content-container h4,
+.content-container p {
+  padding: 5px 15px 5px 15px;
+  margin: 0px;
+}
+
+.image-container {
+  width: 400px;
+}
+
+.flex-container.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container {
+  padding: 5px 15px 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.icon,
+.flex-container a .icon {
+  height: 20px;
+  width: 20px;
+  margin: 0 20px 0 20px;
+}

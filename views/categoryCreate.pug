@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  div(class='form-container')
+    h2 #{title}
+    form(method='POST', action='/category/add')
+      #form-group
+        label Name:
+        input.form-control(name='name', type='text', placeholder='Enter the category name')
+      br
+      #form-group
+        label Image URL:
+        input.form-control(name='image', type='url', placeholder='Enter an image URL')
+      br
+      input.btn.btn-primary(type='submit',value='Submit')
+
+  if errors
+   ul
+    for error in errors
+     li!= error.msg  

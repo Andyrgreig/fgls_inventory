@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  div(class='form-container')
+    h2 #{item.name}
+
+    - const img = item.image
+    div(class='image-container delete')
+      img(class='image product', src=img)
+
+    p #[strong Category:] #{item.category.name}
+    p #[strong Description: ] #{item.description} 
+    - const price = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(item.price)
+    p #[strong Price:] #{price}
+    p #[strong Stock:] #{item.stock}
+
+    form(method='POST', action=item.url+'/delete')
+      #form-group
+        input.form-control(type="hidden" value="delete")
+        label Admin Password:
+        input.form-control(name='password', type='password')
+      br
+      input.btn.btn-primary(type='submit',value='Delete')
+
+    if errors
+     ul
+      for error in errors
+       li!= error.msg  

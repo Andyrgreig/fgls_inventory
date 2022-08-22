@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  div(class='form-container')
+    h2 #{item.name}
+
+    - const img = item.image
+    div(class='image-container delete')
+      img(class='image product', src=img)
+
+    p #[strong Category:] #{item.category.name}
+    p #[strong Description: ] #{item.description} 
+    - const price = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(item.price)
+    p #[strong Price:] #{price}
+    p #[strong Stock:] #{item.stock}
+    div(class='flex-container')
+      a(href=item.url + '/update')
+        img(class="icon" src="../images/update.svg")
+      a(href=item.url + '/delete')
+        img(class="icon" src="../images/delete.svg")

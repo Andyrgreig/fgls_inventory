@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  
+  div(class='form-container')
+
+    h2 #{title}
+    form(method='POST', action=item.url+'/update')
+      #form-group  
+        label Name:
+        input.form-control(name='name', type='text', value=item.name)
+      br
+      #form-group
+        label Image URL:
+        input.form-control(name='imageUrl', type='text', value=item.image)
+      br
+      #form-group
+        label Admin Password:
+        input.form-control(name='password', type='password')
+      br
+      input.btn.btn-primary(type='submit',value='Submit')
+
+
+  if errors
+   ul
+    for error in errors
+     li!= error.msg  

@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  
+  div(class='form-container')
+    h2 #{title}
+    form(method='POST', action='/product/add')
+      #form-group
+        label Name:
+        input.form-control(name='name', type='text')
+      br
+      #form-group
+        label Description:
+        textarea.form-control(name='description') 
+      br
+      #form-group
+        label Category:
+        select(name='category')
+          each category in categories 
+            if (category.id === item.category) 
+              option(value=category.name selected) #{category.name}
+            else
+              option(value=category.name) #{category.name}
+      br
+      #form-group
+        label Price:
+        input.form-control(name='price', type='text')
+      br
+      #form-group
+        label Stock:
+        input.form-control(name='stock', type='text')                  
+      br
+      #form-group
+        label Image URL:
+        input.form-control(name='image', type='text')
+      br
+      input.btn.btn-primary(type='submit',value='Submit')
+
+
+    if errors
+     ul
+      for error in errors
+        li!= error.msg  
+
+
